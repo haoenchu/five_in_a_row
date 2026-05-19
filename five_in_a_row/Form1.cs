@@ -13,9 +13,12 @@ using System.Windows.Forms;
 namespace five_in_a_row {
     public partial class Form1 : Form {
 
+
+
+
         int[,] board = new int[15, 15]; // 0: empty, 1: player, 2: AI
         int turn = 1; // 假設玩家是1，AI是2
-
+        int Mode = 0; // 0: 未選擇, 1: 單人, 2: 雙人
         public Image GetPic(string poker_name) {
             return five_in_a_row.Properties.Resources.ResourceManager.GetObject(poker_name) as Image;
         }
@@ -31,10 +34,18 @@ namespace five_in_a_row {
         private void Initialbtn() {
             // chessboard 一格寬60*60，共15*15  可放棋子的位置 左上:(30,30) ~ 右下:(840,840)
             // bnt 正中心位置 (352, 417) size (195,75)
-            btn_start.Visible = true;
-            btn_start.Text = "開始遊戲";
-            btn_start.Location = new Point(352, 417);
-            btn_start.Size = new Size(195, 75);
+
+            btn_single.Visible = true;
+            btn_single.Text = "單人模式";
+            btn_single.Location = new Point(277, 417);
+            btn_single.Size = new Size(165, 60);
+
+
+            btn_double.Visible = true;
+            btn_double.Text = "雙人模式";
+            btn_double.Location = new Point(457, 417);
+            btn_double.Size = new Size(165, 60); 
+
 
 
 
@@ -44,10 +55,6 @@ namespace five_in_a_row {
             chessboard.MouseClick += new MouseEventHandler(MouseClick_play_chess);
         }
 
-        private void btn_start_Click_1(object sender, EventArgs e) {
-            btn_start.Visible = false;
-            chessboard.Enabled = true;
-        }
 
         private void btn_end_Click(object sender, EventArgs e) { // 重置遊戲狀態
             board = new int[15, 15]; // 重置棋盤
@@ -76,6 +83,20 @@ namespace five_in_a_row {
             this.chessboard.Controls.Add(chessPiece); // 將棋子添加到棋盤上
         }
 
+        private void btn_single_Click(object sender, EventArgs e) {
+            Mode = 1; // 單人模式
+            btn_single.Visible = false;
+            btn_double.Visible = false;
+            chessboard.Enabled = true; // 啟用棋盤讓玩家開始下棋
+        }
+
+        private void btn_double_Click(object sender, EventArgs e) {
+            Mode = 2; // 雙人模式
+            btn_single.Visible = false;
+            btn_double.Visible = false;
+            chessboard.Enabled = true; // 啟用棋盤讓玩家開始下棋
+        }
+
         private void MouseClick_play_chess(object sender, MouseEventArgs e) {
             // Local coordinates (relative to the top-left of the form
 
@@ -87,10 +108,18 @@ namespace five_in_a_row {
 
             if (winning_condition(X, Y)) {
                 string message = "";
-                if (turn == 1)
-                    message = "玩家獲勝！";
-                else if (turn == 2)
-                    message = "你輸了！";
+
+                if (Mode == 0) return; // 如果還沒選擇模式，不顯示勝利訊息
+
+                if (Mode == 2) { // 雙人模式
+                     message = $"玩家 {turn} 獲勝！";
+                }
+                else if (Mode == 1) { // 單人模式
+                    if (turn == 1)
+                        message = "你贏了！";
+                    else if (turn == 2)
+                        message = "你輸了！";
+                }
                 MessageBox.Show(message);
                 chessboard.Enabled = false; // 禁止繼續下棋
                 btn_end.Visible = true;
@@ -99,9 +128,19 @@ namespace five_in_a_row {
 
            // MessageBox.Show($"Clicked at: X={X}, Y={Y}");
 
-            turn = 2;
-            AI_move();
-            turn = 1;
+
+            if (Mode == 1) {
+                turn = 2;
+                AI_move();
+                turn = 1;
+            }
+            else if (Mode == 2) {
+                turn = (turn == 1) ? 2 : 1; // 切換玩家
+            }
+
+
+
+
         }
 
         private bool winning_condition(int x, int y) {
@@ -213,7 +252,7 @@ namespace five_in_a_row {
             if (winning_condition(bestX, bestY)) {
                 string message = "";
                 if (turn == 1)
-                    message = "玩家獲勝！";
+                    message = "你贏了！";
                 else if (turn == 2)
                     message = "你輸了！";
                 MessageBox.Show(message);
@@ -224,5 +263,7 @@ namespace five_in_a_row {
 
             return;
         }
+
+        
     }
 }

@@ -23,23 +23,12 @@
         /// 這個方法的內容。
         /// </summary>
         private void InitializeComponent() {
-            this.btn_start = new System.Windows.Forms.Button();
             this.btn_end = new System.Windows.Forms.Button();
             this.chessboard = new System.Windows.Forms.PictureBox();
+            this.btn_single = new System.Windows.Forms.Button();
+            this.btn_double = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chessboard)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btn_start
-            // 
-            this.btn_start.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_start.Location = new System.Drawing.Point(12, 0);
-            this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(194, 28);
-            this.btn_start.TabIndex = 1;
-            this.btn_start.Text = "start";
-            this.btn_start.UseVisualStyleBackColor = true;
-            this.btn_start.Visible = false;
-            this.btn_start.Click += new System.EventHandler(this.btn_start_Click_1);
             // 
             // btn_end
             // 
@@ -66,13 +55,38 @@
             this.chessboard.TabStop = false;
             this.chessboard.Click += new System.EventHandler(this.chessboard_Click);
             // 
+            // btn_single
+            // 
+            this.btn_single.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_single.Location = new System.Drawing.Point(26, 122);
+            this.btn_single.Name = "btn_single";
+            this.btn_single.Size = new System.Drawing.Size(194, 28);
+            this.btn_single.TabIndex = 3;
+            this.btn_single.Text = "start";
+            this.btn_single.UseVisualStyleBackColor = true;
+            this.btn_single.Visible = false;
+            this.btn_single.Click += new System.EventHandler(this.btn_single_Click);
+            // 
+            // btn_double
+            // 
+            this.btn_double.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_double.Location = new System.Drawing.Point(26, 169);
+            this.btn_double.Name = "btn_double";
+            this.btn_double.Size = new System.Drawing.Size(194, 28);
+            this.btn_double.TabIndex = 4;
+            this.btn_double.Text = "start";
+            this.btn_double.UseVisualStyleBackColor = true;
+            this.btn_double.Visible = false;
+            this.btn_double.Click += new System.EventHandler(this.btn_double_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 900);
+            this.Controls.Add(this.btn_double);
+            this.Controls.Add(this.btn_single);
             this.Controls.Add(this.btn_end);
-            this.Controls.Add(this.btn_start);
             this.Controls.Add(this.chessboard);
             this.Name = "Form1";
             this.Text = "五子棋遊戲";
@@ -85,8 +99,9 @@
         #endregion
 
         private System.Windows.Forms.PictureBox chessboard;
-        private System.Windows.Forms.Button btn_start;
         private System.Windows.Forms.Button btn_end;
+        private System.Windows.Forms.Button btn_single;
+        private System.Windows.Forms.Button btn_double;
     }
 }
 
