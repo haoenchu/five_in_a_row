@@ -89,5 +89,20 @@
   <ItemGroup>
     <None Include="Resources\black.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_player_winning.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\single_player_losing.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player2_winning.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1_winning.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\place_chess.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

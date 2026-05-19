@@ -9,6 +9,7 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace five_in_a_row {
     public partial class Form1 : Form {
@@ -60,8 +61,11 @@ namespace five_in_a_row {
             board = new int[15, 15]; // 重置棋盤
             turn = 1; // 重置玩家回合
             chessboard.Controls.Clear(); // 清除棋盤上的棋子
-            chessboard.Enabled = true; // 重新啟用棋盤
             btn_end.Visible = false; // 隱藏結束按鈕
+
+            // 重新顯示模式選擇按鈕
+            btn_single.Visible = true;
+            btn_double.Visible = true;
 
         }
 
@@ -81,6 +85,9 @@ namespace five_in_a_row {
             chessPiece.SizeMode = PictureBoxSizeMode.StretchImage; // 調整圖片大小以適應棋子大小
             chessPiece.BackColor = Color.Transparent; // 設定背景為透明，以便棋子圖片顯示正常
             this.chessboard.Controls.Add(chessPiece); // 將棋子添加到棋盤上
+
+            // 播放下棋音效
+            play_sound("place_chess");
         }
 
         private void btn_single_Click(object sender, EventArgs e) {
@@ -113,12 +120,15 @@ namespace five_in_a_row {
 
                 if (Mode == 2) { // 雙人模式
                      message = $"玩家 {turn} 獲勝！";
+
+                    if (turn == 1)
+                        play_sound("player1_win");
+                    else if (turn == 2)
+                        play_sound("player2_win");
                 }
                 else if (Mode == 1) { // 單人模式
-                    if (turn == 1)
-                        message = "你贏了！";
-                    else if (turn == 2)
-                        message = "你輸了！";
+                    message = "你贏了！";
+                    play_sound("single_player_winning");
                 }
                 MessageBox.Show(message);
                 chessboard.Enabled = false; // 禁止繼續下棋
@@ -137,11 +147,8 @@ namespace five_in_a_row {
             else if (Mode == 2) {
                 turn = (turn == 1) ? 2 : 1; // 切換玩家
             }
-
-
-
-
         }
+
 
         private bool winning_condition(int x, int y) {
             int[,] directions = { { 1, 0 }, { 0, 1 }, { 1, 1 }, { 1, -1 } };
@@ -251,10 +258,8 @@ namespace five_in_a_row {
 
             if (winning_condition(bestX, bestY)) {
                 string message = "";
-                if (turn == 1)
-                    message = "你贏了！";
-                else if (turn == 2)
-                    message = "你輸了！";
+                message = "你輸了！";
+                play_sound("single_player_losing");
                 MessageBox.Show(message);
                 chessboard.Enabled = false; // 禁止繼續下棋
                 btn_end.Visible = true;
@@ -264,6 +269,13 @@ namespace five_in_a_row {
             return;
         }
 
-        
+
+        //音效處理
+        private void play_sound(string sound_name) {
+            SoundPlayer player = new SoundPlayer(five_in_a_row.Properties.Resources.ResourceManager.GetStream(sound_name));
+            player.Play();
+        }
+
+
     }
 }
