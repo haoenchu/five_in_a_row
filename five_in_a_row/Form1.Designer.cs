@@ -58,11 +58,11 @@
             // btn_single
             // 
             this.btn_single.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_single.Location = new System.Drawing.Point(26, 122);
+            this.btn_single.Location = new System.Drawing.Point(26, 99);
             this.btn_single.Name = "btn_single";
-            this.btn_single.Size = new System.Drawing.Size(194, 28);
+            this.btn_single.Size = new System.Drawing.Size(194, 51);
             this.btn_single.TabIndex = 3;
-            this.btn_single.Text = "start";
+            this.btn_single.Text = "single";
             this.btn_single.UseVisualStyleBackColor = true;
             this.btn_single.Visible = false;
             this.btn_single.Click += new System.EventHandler(this.btn_single_Click);
@@ -72,9 +72,9 @@
             this.btn_double.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_double.Location = new System.Drawing.Point(26, 169);
             this.btn_double.Name = "btn_double";
-            this.btn_double.Size = new System.Drawing.Size(194, 28);
+            this.btn_double.Size = new System.Drawing.Size(194, 52);
             this.btn_double.TabIndex = 4;
-            this.btn_double.Text = "start";
+            this.btn_double.Text = "double";
             this.btn_double.UseVisualStyleBackColor = true;
             this.btn_double.Visible = false;
             this.btn_double.Click += new System.EventHandler(this.btn_double_Click);
