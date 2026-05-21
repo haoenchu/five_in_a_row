@@ -12,6 +12,10 @@
 - AI 具備進攻與防守評分邏輯
 - 支援勝負判斷（水平、垂直、斜向四方向）
 - 可重新開始遊戲
+- **遊戲音效** : 1.在下棋時會有下棋音效 2.在遊戲結束時會有勝利音效
+
+[single_player_losing.wav](https://github.com/user-attachments/files/28100080/single_player_losing.wav) *(這個是AI獲勝時的音效)*
+
 
 ---
 
