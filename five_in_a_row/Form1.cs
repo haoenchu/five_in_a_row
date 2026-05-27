@@ -38,20 +38,20 @@ namespace five_in_a_row {
 
             btn_single.Visible = true;
             btn_single.Text = "單人模式";
-            btn_single.Location = new Point(277, 417);
+            btn_single.Location = new Point(277, 505);
             btn_single.Size = new Size(165, 60);
 
 
             btn_double.Visible = true;
             btn_double.Text = "雙人模式";
-            btn_double.Location = new Point(457, 417);
-            btn_double.Size = new Size(165, 60); 
+            btn_double.Location = new Point(457, 505);
+            btn_double.Size = new Size(165, 60);
 
 
 
 
             btn_end.Text = "再來一局";
-            btn_end.Location = new Point(352, 417);
+            btn_end.Location = new Point(352, 505);
             btn_end.Size = new Size(195, 75);
             chessboard.MouseClick += new MouseEventHandler(MouseClick_play_chess);
         }
@@ -66,6 +66,13 @@ namespace five_in_a_row {
             // 重新顯示模式選擇按鈕
             btn_single.Visible = true;
             btn_double.Visible = true;
+            
+            //重新重製
+            MOD_output.Visible = false;
+            black_mention.Visible = false;
+            white_mention.Visible = false;
+            round_mention.Visible = false;
+            tips.Visible = false;
 
         }
 
@@ -95,6 +102,20 @@ namespace five_in_a_row {
             btn_single.Visible = false;
             btn_double.Visible = false;
             chessboard.Enabled = true; // 啟用棋盤讓玩家開始下棋
+
+            MOD_output.Text = "單人模式";
+            MOD_output.Visible = true;
+
+            black_mention.Text = "玩家: 黑棋";
+            white_mention.Text = "電腦: 白棋";
+            black_mention.Visible = true;
+            white_mention.Visible = true;
+
+
+            round_mention.Visible = true;
+            round_mention.Text = "電腦下很快就不體醒了";
+            tips.Visible = true;
+
         }
 
         private void btn_double_Click(object sender, EventArgs e) {
@@ -102,14 +123,41 @@ namespace five_in_a_row {
             btn_single.Visible = false;
             btn_double.Visible = false;
             chessboard.Enabled = true; // 啟用棋盤讓玩家開始下棋
+
+            MOD_output.Text = "雙人模式";
+            MOD_output.Visible = true;
+
+            black_mention.Text = "玩家1: 黑棋";
+            white_mention.Text = "玩家2: 白棋";
+            black_mention.Visible = true;
+            white_mention.Visible = true;
+
+
+            round_mention.Visible = true;
+            round_change();
+            tips.Visible = true;
+        }
+
+        private void round_change()
+        {
+            if (turn == 1)
+                round_mention.Text = "玩家1的回合";
+            else
+                round_mention.Text = "玩家2的回合";
         }
 
         private void MouseClick_play_chess(object sender, MouseEventArgs e) {
             // Local coordinates (relative to the top-left of the form
 
+
             int X = e.X / 60;
             int Y = e.Y / 60;
-            draw_chess_on_board(X, Y);
+
+            //防呆: 確保不重複下到已經下過的地方
+            if (board[X, Y] != 0)
+                return;
+            else
+                draw_chess_on_board(X, Y);
 
             board[X, Y] = turn; // 將棋子放在棋盤上
 
@@ -143,9 +191,11 @@ namespace five_in_a_row {
                 turn = 2;
                 AI_move();
                 turn = 1;
+
             }
             else if (Mode == 2) {
                 turn = (turn == 1) ? 2 : 1; // 切換玩家
+                round_change();
             }
         }
 
@@ -276,6 +326,29 @@ namespace five_in_a_row {
             player.Play();
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void round_mention_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MOD_output_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void black_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void White_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
