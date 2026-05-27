@@ -1,7 +1,8 @@
 # 五子棋遊戲 (Five in a Row)
 
 一款使用 C# WinForms 開發的五子棋遊戲，支援單人（對戰 AI）與雙人本地對戰兩種模式。
-<img width="500" height="525" alt="image" src="https://github.com/user-attachments/assets/409f8011-3314-44f8-8bf5-a04fe8a3042f" />
+<img width="600" height="650" alt="螢幕擷取畫面 2026-05-27 161614" src="https://github.com/user-attachments/assets/2a98dc3b-c8c0-4a15-bed6-61f3e91745ee" />
+
 
 ---
 
@@ -66,9 +67,12 @@
 | 再來一局按鈕 | 重置棋盤，重新開始 |
 
   </td>
-  <td>
-    <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/7efd6003-fac6-4e18-a8ce-2795865be447" />
-  </td>
+     <td>
+        <img width="396" height="396" alt="Adobe Express - 影片專案 1" src="https://github.com/user-attachments/assets/fdaeb264-51e5-40b2-9600-8b5f344d2030" />
+    </td>
+     <td>
+   <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/7efd6003-fac6-4e18-a8ce-2795865be447" />
+     </td>
   </tr>
 </table>
 
