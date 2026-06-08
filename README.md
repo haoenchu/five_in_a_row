@@ -68,7 +68,7 @@
 
   </td>
      <td>
-        <img width="396" height="396" alt="Adobe Express - 影片專案 1" src="https://github.com/user-attachments/assets/fdaeb264-51e5-40b2-9600-8b5f344d2030" />
+        <img width="300" height="300" alt="Adobe Express - 影片專案 1" src="https://github.com/user-attachments/assets/fdaeb264-51e5-40b2-9600-8b5f344d2030" />
     </td>
      <td>
    <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/7efd6003-fac6-4e18-a8ce-2795865be447" />
